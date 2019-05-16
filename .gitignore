@@ -1,0 +1,10 @@
+
+Debug/lifecycle.obj
+*.obj
+*.idb
+*.vcxproj
+*.filters
+*.user
+*.pdb
+*.tlog
+*.log
