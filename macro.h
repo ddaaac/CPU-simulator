@@ -8,6 +8,10 @@
 #define SJF 1
 #define PRIORITY 2
 #define RR 3
+#define LIFO 4
+#define HRRN 5
+#define SIF 6
+#define LOTT 7
 
 #define INFINITY 999999
 
@@ -22,5 +26,7 @@
 #define MAX_CYCLE 500
 
 #define NUM_SCHEDULING 9
+
+#define MAX_LOTTERY_NUM 10
 
 #endif

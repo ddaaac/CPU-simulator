@@ -20,6 +20,7 @@ int main() {
 
 	// 각 scheduling 별로 정보를 모아 evaluate에서 쓰기 위한 manager
 	Schedule* schedule_manager[NUM_SCHEDULING];
+	Schedule* schedule_manager_additional[4];
 
 	// FCFS
 	printf(" - FCFS\n\n");
@@ -102,7 +103,44 @@ int main() {
 	print_chart(gantt_chart, rr5->total_time);
 	schedule_manager[8] = rr5;
 
+	// LIFO
+	printf(" - LIFO\n\n");
+	init(LIFO, 0, INFINITY, 0);
+	Schedule* lifo = life_cycle();
+	if (lifo->err)
+		return -1;
+	print_chart(gantt_chart, lifo->total_time);
+	schedule_manager_additional[0] = lifo;
+
+	// HRRN
+	printf(" - HRRN\n\n");
+	init(HRRN, 0, INFINITY, 0);
+	Schedule* hrrn = life_cycle();
+	if (hrrn->err)
+		return -1;
+	print_chart(gantt_chart, hrrn->total_time);
+	schedule_manager_additional[1] = hrrn;
+
+	// SIF
+	printf(" - SIF\n\n");
+	init(SIF, 0, INFINITY, 0);
+	Schedule* sif = life_cycle();
+	if (sif->err)
+		return -1;
+	print_chart(gantt_chart, sif->total_time);
+	schedule_manager_additional[2] = sif;
+
+	// LOTTERY
+	printf(" - LOTT\n\n");
+	init(LOTT, 0, INFINITY, 0);
+	Schedule* lott = life_cycle();
+	if (lott->err)
+		return -1;
+	print_chart(gantt_chart, lott->total_time);
+	schedule_manager_additional[3] = lott;
+
 	evaluate(schedule_manager);
+	evaluate_additional(schedule_manager_additional);
 
 	return 0;
 }

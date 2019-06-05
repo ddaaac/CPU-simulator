@@ -19,5 +19,6 @@ Schedule* init_schedule(int, int, int, int);
 int highest_priority_process();
 void print_chart(int[], int);
 void evaluate(Schedule* []);
+void evaluate_additional(Schedule* []);
 
 #endif

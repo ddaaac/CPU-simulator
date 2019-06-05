@@ -28,7 +28,7 @@ void init_process() {
 	printf("%6s %6s %6s %6s %6s\n", "pid", "ariv", "cpu", "io", "pri");
 	for (int pid = 0; pid < TOTAL_PID; pid++) {
 		process[pid] = *create_process(pid);
-		printf("%6d %6d %6d %6d %6d\n", process[pid].pid, process[pid].arrival_time, process[pid].cpu_burst_time, process[pid].io_burst_time, process[pid].priority);
+		printf("%6d %6d %6d %6d %6d\n", process[pid].pid, process[pid].arrival_time, process[pid].cpu_burst_time, process[pid].io_burst_time, process[pid].own_priority);
 	}
 	printf("\n");
 }
@@ -296,7 +296,7 @@ int one_cycle() {
 			// scheduling이 aging 기법을 사용한다면
 			if (schedule->aging) {
 				// 3초에 한번씩
-				if (process[pid].insert_time < cur_time && ((cur_time - process[pid].insert_time) % 3 == 0)) {
+				if (process[pid].insert_time < cur_time && ((cur_time - process[pid].insert_time) % 3 == 2)) {
 					// priority를 한단계 올려줌, 이 때 priority는 0보다 작을 수 없음
 					if (process[pid].priority > 0) {
 						//printf("Aging : Process[%d] gains one more priority\n", pid);

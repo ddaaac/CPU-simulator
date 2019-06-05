@@ -21,6 +21,7 @@ Process* create_process(int pid) {
 	process->response_time = NOT_EXIST;
 	process->insert_time = NOT_EXIST;
 	process->is_terminal = 0;
+	process->lottery = rand() % MAX_LOTTERY_NUM + 1;
 	return  process;
 }
 
